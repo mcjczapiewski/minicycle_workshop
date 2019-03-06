@@ -11,6 +11,12 @@
 
 <!-- tocstop -->
 
+First, a screenshot for inspiration:
+
+![screenshot](screenshot.png)
+
+(want a cool terminal? install `cool-retro-term`)
+
 ## Basic program
 
 I should be able to run the game, see my surroundings, and quit.
