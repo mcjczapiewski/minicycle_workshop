@@ -173,7 +173,7 @@ The Wizard says, "Greetings, adventurer!"
 I want to see more interesting behaviour from the characters.
 
 - Every few turns, the characters should move randomly to the next possible room
-- If the character is in the room, there is a message like `The Wizard leaves to the north` or `The Wizard exits to the east`
+- If the character is in the room, there is a message like `The Wizard enters from the north` or `The Wizard exits to the east`
 
 ## Keeping score
 
