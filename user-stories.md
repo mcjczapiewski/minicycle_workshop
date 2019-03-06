@@ -7,7 +7,12 @@
 - [Colors](#colors)
 - [Items](#items)
 - [Help](#help)
+- [Bigger game scenario](#bigger-game-scenario)
+- [Keys and opening doors](#keys-and-opening-doors)
 - [Characters](#characters)
+- [Characters move between rooms](#characters-move-between-rooms)
+- [Keeping score](#keeping-score)
+- [Winning the game](#winning-the-game)
 
 <!-- tocstop -->
 
@@ -97,6 +102,7 @@ I want to find items, and pick them up.
 - The command `get` should pick the item up -- now the player has it
 - The command `inventory` (or `i`) should display player's list of items
 
+Hint: You can either have a separate prompt for the item (`"Get what? "`), or expect a more complicated command in single line (`get lamp`).
 
 <details>
 <summary>Example</summary>
@@ -119,10 +125,25 @@ You are carrying: key
 
 ## Help
 
-I want to see a list of commands.
+I want to see a list of commands, so that I know what's possible in the game.
 
 - The command `help` (or `h`, or `?`) should display a list of available commands
 - Remember to add new commands to help after you implement them!
+- The game starts with `Type "help" for a list of commands.`
+
+## Bigger game scenario
+
+I want to play an interesting game with a lot of space to explore!
+
+- There are at least 5 rooms with various names and descriptions
+- You have a map (on paper) of rooms and connections
+
+## Keys and opening doors
+
+I want to be forced to find a key before I can go further.
+
+- There is an item (key) that you can pick up, or receive from a character
+- Some exits can be taken only when you have the key
 
 ## Characters
 
@@ -149,10 +170,25 @@ The Wizard says, "Greetings, adventurer!"
 
 ## Characters move between rooms
 
-## Bigger game scenario
+I want to see more interesting behaviour from the characters.
 
-## Keys and opening doors
+- Every few turns, the characters should move randomly to the next possible room
+- If the character is in the room, there is a message like `The Wizard leaves to the north` or `The Wizard exits to the east`
 
 ## Keeping score
 
+I want the game to keep a score, so that I know how awesome I am.
+
+- Player starts at 0 points
+- Visiting each room is worth some number of points (dependent on the room)
+- Same with talking to a character, or picking up an item
+- The game displays the score when you quit (or win)
+
 ## Winning the game
+
+I want to be able to win the game.
+
+- There is a goal to the game (like reaching some room)
+- The goal is not trivial to achieve (for instance, requires unlocking something)
+- The game displays the goal at the beginning
+- When I reach the goal, the game displays congratulations and maybe some nice ASCII art, then exits
