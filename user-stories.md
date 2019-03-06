@@ -146,3 +146,13 @@ The Wizard says, "Greetings, adventurer!"
 ```
 
 </details>
+
+## Characters move between rooms
+
+## Bigger game scenario
+
+## Keys and opening doors
+
+## Keeping score
+
+## Winning the game
