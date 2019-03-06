@@ -19,6 +19,8 @@ First, a screenshot for inspiration:
 
 ## Basic program
 
+*This should already be in your starting code*.
+
 I should be able to run the game, see my surroundings, and quit.
 
 - Display information about surroundings
@@ -52,6 +54,8 @@ I want to move between rooms.
 - Display which exits are available (e.g. `north`, `south`)
 - Display room information when moving
 
+Hint: Store a dictionary of exits in a room: `'east': 'room1', 'west': 'room2'` etc.
+
 <details>
 <summary>Example</summary>
 
@@ -70,8 +74,6 @@ There are the following exits: south
 ```
 
 </details>
-
-Hint: Store a dictionary of exits in a room: `'east': 'room1', 'west': 'room2'` etc.
 
 ## Colors
 
