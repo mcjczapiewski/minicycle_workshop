@@ -10,6 +10,7 @@ I should be able to run the game, see my surroundings, and quit.
 
 <details>
 <summary>Example</summary>
+
 ```
 Outside
 
@@ -21,4 +22,5 @@ I don't recognize that command.
 > quit
 Goodbye!
 ```
+
 </details>
