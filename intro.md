@@ -17,3 +17,7 @@ Up to you. Starting code will be provided in Python and JavaScript. Remember tha
 Absolutely! We recommend teams of 2-3 people. Good team cooperation and pair programming is a must.
 
 If you want to work in a bigger team, remember that merging code from 2 computers within one hour might be challenging.
+
+**Should I participate?**
+
+You don't have to, but you're encouraged! Just be prepare for a very intense day.
