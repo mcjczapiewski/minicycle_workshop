@@ -81,7 +81,7 @@ def main(stdscr):
         curses.init_pair(i, i, -1)
     try:
         while True:
-            now = datetime.now() - timedelta(hours=3)
+            now = datetime.now()
             draw(stdscr, now)
             time.sleep(DELAY)
     except KeyboardInterrupt:
