@@ -1,5 +1,11 @@
 # Workshop schedule
 
+## What to prepare before the event?
+
+- Whiteboards, markers, wiper
+- Paper and pens
+- Projector, HDMI adapter
+
 ## Schedule
 
 - 9:20 - 9:40 intro
