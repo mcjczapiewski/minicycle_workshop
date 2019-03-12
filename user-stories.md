@@ -12,6 +12,7 @@
 - [Characters](#characters)
 - [Characters move between rooms](#characters-move-between-rooms)
 - [Interact with characters](#interact-with-characters)
+- [Interact with environment](#interact-with-environment)
 - [Keeping score](#keeping-score)
 - [Winning the game](#winning-the-game)
 
@@ -181,10 +182,23 @@ I want to see more interesting behaviour from the characters.
 I want to interact with characters in a more complicated ways.
 
 - There are at least 2 characters in the game
-- Each has some custom interaction. Some ideas:
+- Each character has some custom interaction.
+- Some ideas:
   - Fetch quest. Talk to character and they say they need some item. If you give them the item, they will give you something else.
   - Combat. Maybe it's a dragon? You need to kill it! But you need to find a sword first.
   - Mini-game. Maybe you can play dice with this character? Will they give you anything if you win?
+
+## Interact with environment
+
+I want to interact with the rooms I am in, so that the game world is more dynamic.
+
+- The room has a different description depending on the game state.
+- There are at least 2 custom interactions like that.
+- Some ideas:
+  - Darkness. The room is completely dark. There are some items but you cannot see them. Only when you `use` a torch, you will see the items and you will be able to pick them up. (Or perhaps you have a night vision goggles?)
+  - Fire. This room is on fire! You can not pass (exit in the other direction) until you put it out.
+  - There is a ticking bomb! You have 3 turns to disarm it, or it will explode and the game will end.
+  - Cute creatures. This room is full of puppies that want to play. You need to pet them and they will let you pass.
 
 ## Keeping score
 
