@@ -11,6 +11,7 @@
 - [Keys and opening doors](#keys-and-opening-doors)
 - [Characters](#characters)
 - [Characters move between rooms](#characters-move-between-rooms)
+- [Interact with characters](#interact-with-characters)
 - [Keeping score](#keeping-score)
 - [Winning the game](#winning-the-game)
 
@@ -174,6 +175,16 @@ I want to see more interesting behaviour from the characters.
 
 - Every few turns, the characters should move randomly to the next possible room
 - If the character is in the room, there is a message like `The Wizard enters from the north` or `The Wizard exits to the east`
+
+## Interact with characters
+
+I want to interact with characters in a more complicated ways.
+
+- There are at least 2 characters in the game
+- Each has some custom interaction. Some ideas:
+  - Fetch quest. Talk to character and they say they need some item. If you give them the item, they will give you something else.
+  - Combat. Maybe it's a dragon? You need to kill it! But you need to find a sword first.
+  - Mini-game. Maybe you can play dice with this character? Will they give you anything if you win?
 
 ## Keeping score
 
