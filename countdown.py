@@ -6,9 +6,9 @@ from datetime import datetime, timedelta
 DELAY = 0.1
 
 SCHEDULE = [
-    (' 9:20', ' 9:40', 'Introduction'),
-    (' 9:40', ' 9:50', 'Prepare teams and code'),
-    (' 9:50', '10:00', 'Initial planning'),
+    (' 9:20', ' 9:25', 'Introduction'),
+    (' 9:25', ' 9:35', 'Prepare teams and code'),
+    (' 9:35', '10:00', 'Initial planning'),
     '',
     ('10:00', '10:50', 'Iteration 1'),
     ('10:50', '11:00', 'Review and retro'),
