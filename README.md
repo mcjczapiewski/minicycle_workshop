@@ -1,7 +1,7 @@
 # Minicycle workshop
 
-[Introduction](intro.md) - advertisement text
+**[User stories](user-stories.md)** - details of the project
 
-[Schedule](schedule.md) - mostly for mentors
+[Introduction](intro.md) - to send in invitation
 
-**[User stories](user-stories.md)**
+[Guide for mentors](guide-for-mentors.md)
