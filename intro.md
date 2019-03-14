@@ -20,4 +20,4 @@ If you want to work in a bigger team, remember that merging code from 2 computer
 
 **Should I participate?**
 
-You don't have to, but you're encouraged! Just be prepare for a very intense day.
+You don't have to, but you're encouraged! Just be prepared for a very intense day.
