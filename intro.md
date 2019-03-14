@@ -10,7 +10,7 @@ There will be starting code and a backlog of user stories, with different ideas 
 
 **What about technology?**
 
-Up to you. Starting code will be provided in Python and JavaScript. Remember that you will need to code quickly.
+Up to you. Starting code will be provided in Python, JavaScript, and Java. Remember that you will need to code quickly.
 
 **Are we working in teams?**
 
