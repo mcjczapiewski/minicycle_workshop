@@ -27,12 +27,14 @@ Project intro:
 Intro:
 - "TW week in one day"
 - 4 one-hour iterations - no a lot of time, so make it count
-- There is project and user-stories, but you'll get a lot of freedom
+- There is project and user-stories, but you'll get a lot of freedom. You can do them in any order
+- The project doesn't have to be in English
 - Start iteration with planning, but don't plan too much! 5-10 minutes discussion is probably enough
-- At the end of each iteration, at least **1 new user story** should be ready to present
+- At the end of each iteration, you need to present working project. At least **1 new user story** should be presented
 - When something is working, **commit**
 
 Setup:
+- Send Classroom link on Discord: https://classroom.github.com/a/LQmsYLSe
 - Select your teams (2/3 people + language)
 - I suggest pair programming, you can alternate or one person can code the whole time
 - Download the repo + run the program now
