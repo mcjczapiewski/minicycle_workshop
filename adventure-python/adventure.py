@@ -12,37 +12,42 @@ rooms = {
         "east": "castle",
         "west": "cave",
         "move possibility": "east, west",
-        "items": ["key"]
+        "items": ["key"],
+        "lock": False, # otwarty
     },
     "cave": {
         "title": "Cave",
         "description": "You're in a cave.",
         "east": "outside",
         "move possibility": "east",
-        "items": ["rocks", "torch", "rope", "coins"]
+        "items": ["rocks", "torch", "rope", "coins"],
+        "lock": False, # otwarty
     },
-    "castle":{
+    "castle": {
         "title": "Castle",
         "description": "You're getting to the castle",
         "east": "hall",
         "west": "outside",
         "north": "front room",
         "move possibility": "east, west, north",
-        "items": ["sword"]
+        "items": ["sword"],
+        "lock": True, # zamkniety
     },
-    "front room":{
+    "front room": {
         "title": "Front room",
         "description": "You're getting to the front room in the Castle",
         "south": "castle",
         "move possibility": "south",
-        "items": ["chest", "coins"]
+        "items": ["chest", "coins"],
+        "lock": True, # zamkniety
     },
-    "hall":{
+    "hall": {
         "title": "Hall",
         "description": "You're in the Hall in the Castle",
         "west": "castle",
         "move possibility": "west",
-        "items": ["key"]
+        "items": ["key"],
+        "lock": False, # otwarty
     }
 
 }
@@ -63,8 +68,15 @@ def movement_validation(command):
 def movement(command): #pokazuje możliwości ruchu
     current_position = player['room']
     next_position = rooms[current_position][command]
+    # check if room closed
+    if next_position['lock']: # czy zamkniete
+        if 'key' in player['inventory']:
+            player['inventory'].remove('key')
+            next_position['lock'] = False
+        else:
+            print("The room is closed. Find a key first.")
+            return
     player['room'] = next_position
-
 
 def main():
     print("Type 'help' for a list of commands.")
