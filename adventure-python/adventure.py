@@ -2,6 +2,7 @@
 
 player = {
     'room': 'outside',
+    'inventory': []
 }
 
 rooms = {
@@ -10,13 +11,15 @@ rooms = {
         "description": "You are standing outside of a huge cave entrance.",
         "east": "castle",
         "west": "cave",
-        "move posibility": "There are following exits: east, west"
+        "move posibility": "There are following exits: east, west",
+        "items": ["key"]
     },
     "cave": {
         "title": "Cave",
         "description": "You're in a cave.",
         "east": "outside",
-        "move posibility": "There are following exits: east"
+        "move posibility": "There are following exits: east",
+        "items": ["rocks", "torch", "rope", "coins"]
     },
     "castle":{
         "title": "Castle",
@@ -24,20 +27,22 @@ rooms = {
         "east": "hall",
         "west": "outside",
         "north": "front room",
-        "move posibility": "There are following exits: east, west, north"
-        
+        "move posibility": "There are following exits: east, west, north",
+        "items": ["sword"]
     },
     "front room":{
         "title": "Front room",
         "description": "You're getting to the front room in the Castle",
         "south": "castle",
-        "move posibility": "There are following exits: south"
+        "move posibility": "There are following exits: south",
+        "items": ["chest", "coins"]
     },
     "hall":{
         "title": "Hall",
         "description": "You're in the Hall in the Castle",
         "west": "castle",
-        "move posibility": "There are following exits: west"
+        "move posibility": "There are following exits: west",
+        "items": ["key"]
     }
 
 }
@@ -73,8 +78,28 @@ def main():
             command = movement_validation(command)
             movement(command)
             describe_room()
+        elif command in ['get', 'g']:
+            get_items()
+        elif command in ['info', 'i']:
+            show_inventory()
         else:
             print(f'Unrecognized command: {command}')
+
+
+def get_items():
+    item_to_get = input('Get what? ').lower()
+    player["inventory"].append(item_to_get)
+    print("Taken.")
+    # remove item from room
+    rooms[player['room']]['items'].remove(item_to_get)
+
+
+def show_inventory():
+    current_inventory = ", ".join(player['inventory'])
+    if current_inventory:
+        print(f'You are carrying: {current_inventory}')
+    else:
+        print('Your inventory is empty.')
 
 
 def get_command():
@@ -89,6 +114,8 @@ def describe_room():
     print()
     print(room['description'])
     print(room['move posibility'])
+    if room['items']:
+        print(f'There are following items: {", ".join(room["items"])}')
 
 
 if __name__ == '__main__':
