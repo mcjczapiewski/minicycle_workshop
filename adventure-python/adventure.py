@@ -78,16 +78,19 @@ def main():
             command = movement_validation(command)
             movement(command)
             describe_room()
-        elif command in ['get', 'g']:
-            get_items()
+        elif command in ['get', 'g'] or 'get' in command:
+            get_items(command)
         elif command in ['info', 'i']:
             show_inventory()
         else:
             print(f'Unrecognized command: {command}')
 
 
-def get_items():
-    item_to_get = input('Get what? ').lower()
+def get_items(command):
+    if 'get ' in command:
+        item_to_get = command.split(' ', 1)[1]
+    else:
+        item_to_get = input('Get what? ').lower()
     player["inventory"].append(item_to_get)
     print("Taken.")
     # remove item from room
