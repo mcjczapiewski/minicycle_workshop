@@ -168,10 +168,14 @@ def movement(command):  # pokazuje możliwości ruchu
     if rooms[player["room"]]['light'] == "bright":
         if "key" not in player["inventory"]:
             if next_position in ["castle", "hall", "dining room", "front room"]:
-                key_found = random.randint(1, 3)
+                key_found = random.randint(1, 5)
                 if key_found == 1:
                     player["inventory"].append("key")
                     print("You've just found a key!")
+                 if key_found == 2:
+                    player["inventory"].append("torch")
+                    print("You've just found a torch!")
+                
         character_meeting()
 
 
