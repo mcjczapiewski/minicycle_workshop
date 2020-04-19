@@ -13,16 +13,18 @@ rooms = {
         "east": "castle",
         "west": "cave",
         "move possibility": "east, west",
-        "items": ["key"],
+        "items": ["key", 'torch'],
         "lock": False,  # otwarty
+        "light": 'bright', # światło Zapalone domyślnie
     },
     "cave": {
         "title": "Cave",
         "description": "You're in a cave.",
         "east": "outside",
         "move possibility": "east",
-        "items": ["rocks", "torch", "rope", "coins"],
+        "items": ["rocks", "torch", "rope", "coins", "torch"],
         "lock": False,  # otwarty
+        "light": 'dark', # światło zgaszone domyślnie
     },
     "castle": {
         "title": "Castle",
@@ -34,6 +36,7 @@ rooms = {
         "move possibility": "east, west, north, south",
         "items": ["sword"],
         "lock": True,  # zamknięty
+        "light": 'dark', # światło zgaszone domyślnie
     },
     "front room": {
         "title": "Front room",
@@ -41,8 +44,9 @@ rooms = {
         "south": "castle",
         "east": "bedroom",
         "move possibility": "south, east",
-        "items": ["chest", "coins"],
+        "items": ["chest", "coins", "torch"],
         "lock": True,  # zamknięty
+        "light": "bright", # światło zapalone domyślnie
     },
     "hall": {
         "title": "Hall",
@@ -50,8 +54,9 @@ rooms = {
         "west": "castle",
         "north": "bedroom",
         "move possibility": "west, north",
-        "items": ["umbrella"],
+        "items": ["umbrella", "torch"],
         "lock": False,  # otwarty
+        "light": "dark", # światło zgaszone domyślnie
     },
     "bedroom": {
         "title": "Bedroom",
@@ -61,6 +66,7 @@ rooms = {
         "move possibility": "south, west",
         "items": ["pajama", "book", "the golden cup"],
         "lock": True,  # zamknięty
+        "light": "dark", # światło zgaszone domyślnie
     },
     "dining room": {
         "title": "Dining room",
@@ -70,6 +76,7 @@ dining room.",
         "move possibility": "north",
         "items": ["wine", "beer", "pizza", "prosciutto"],
         "lock": False,  # otwarty
+        "light": "dark", # światło zgaszone domyślnie
     },
 }
 
@@ -131,15 +138,21 @@ def character_meeting():
             else:
                 print(random.choice(characters["wizard"]["lines"]))
 
+def turn_light(next_position): #zapalanie światła
+    if rooms[next_position]['light'] == "dark":
+        if "torch" in player['inventory']:
+            torch_use = input('Press t to light your torch: ').lower()
+            if torch_use in ["t", "torch"]:
+                print('You have light the torch, and You leave it here')
+                rooms[next_position]['light'] = 'bright'
+                player["inventory"].remove('torch')
+        else:
+            print('You have to find the torch, its dark here')
+            
 
 def movement(command):  # pokazuje możliwości ruchu
     current_position = player["room"]
-    if "key" not in player["inventory"]:
-        if current_position in ["castle", "hall", "dining room"]:
-            key_found = random.randint(1, 3)
-            if key_found == 1:
-                player["inventory"].append("key")
-                print("You've just found a key!")
+   
     next_position = rooms[current_position][command]
     # check if room closed
     if rooms[next_position]["lock"]:  # czy zamknięte
@@ -150,12 +163,17 @@ def movement(command):  # pokazuje możliwości ruchu
             print("The room is closed. Find a key first.")
             return
     player["room"] = next_position
-    if rooms[next_position] == "front room":
-        key_found = random.randint(1, 2)
-        if key_found == 1:
-            player["inventory"].append("key")
-            print("You've just found a key!")
-    character_meeting()
+    
+    turn_light(next_position) #czy zapalone światło
+    if rooms[player["room"]]['light'] == "bright":
+        if "key" not in player["inventory"]:
+            if next_position in ["castle", "hall", "dining room", "front room"]:
+                key_found = random.randint(1, 3)
+                if key_found == 1:
+                    player["inventory"].append("key")
+                    print("You've just found a key!")
+        character_meeting()
+
 
 
 def main():
@@ -195,20 +213,25 @@ def show_help():
 
 
 def get_items(command):
-    if "get " in command:
-        item_to_get = command.split(" ", 1)[1]
+    if rooms[player["room"]]['light'] == "bright":
+        if "get " in command:
+            item_to_get = command.split(" ", 1)[1]
+        else:
+            item_to_get = input("Get what? ").lower()
+        while item_to_get not in rooms[player["room"]]["items"]:
+            item_to_get = input("This item does not exists, repeat the name or q to quit: ")
+            if item_to_get in ["q", 'quit']:
+                break
+        random_choice = random.randint(0, 1)
+        if random_choice:
+            player["inventory"].append(item_to_get)
+            print("Taken.")
+            # remove item from room
+            rooms[player["room"]]["items"].remove(item_to_get)
+        else:
+            print("You didn't find it. Search again.")
     else:
-        item_to_get = input("Get what? ").lower()
-    while item_to_get not in rooms[player["room"]]["items"]:
-        item_to_get = input("This item does not exists, repeat the name: ")
-    random_choice = random.randint(0, 1)
-    if random_choice:
-        player["inventory"].append(item_to_get)
-        print("Taken.")
-        # remove item from room
-        rooms[player["room"]]["items"].remove(item_to_get)
-    else:
-        print("You didn't find it. Search again.")
+        print('Its too dark here, You can find nothing')
 
 
 def show_inventory():
@@ -225,14 +248,18 @@ def get_command():
 
 
 def describe_room():
+
     room = rooms[player["room"]]
     print()
     print(room["title"])
     print()
     print(room["description"])
-    print(f"There are following exits: {room['move possibility']}")
-    if room["items"]:
-        print(f'There are following items: {", ".join(room["items"])}')
+    if rooms[player["room"]]['light'] == "bright":
+        print(f"There are following exits: {room['move possibility']}")
+        if room["items"]:
+            print(f'There are following items: {", ".join(room["items"])}')
+    else:
+        print('Its dark here, You have to use torch')
 
 
 if __name__ == "__main__":
