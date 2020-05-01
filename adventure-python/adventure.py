@@ -158,10 +158,18 @@ def movement(command):  # pokazuje możliwości ruchu
     character_meeting()
 
 
+def movement_possible(command):
+    if command not in rooms[player["room"]]["move possibility"]:
+        print("No such exit available. Try again.")
+        return False
+    return True
+
+
 def main():
     print("Type 'help' for a list of commands.")
     describe_room()
     playing = True
+    directions = ["west", "w", "east", "e", "south", "s", "north", "n"]
     while playing:
         command = get_command()
         if command in ["look", "l"]:
@@ -169,8 +177,10 @@ def main():
         elif command in ["quit", "q"]:
             print("Bye!")
             playing = False
-        elif command in ["west", "w", "east", "e", "south", "s", "north", "n"]:
+        elif command in directions:
             command = movement_validation(command)
+            if not movement_possible(command):
+                continue
             movement(command)
         elif command in ["get", "g"] or "get" in command:
             get_items(command)
