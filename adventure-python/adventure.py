@@ -209,8 +209,9 @@ def get_items(command):
         item_to_get = command.split(" ", 1)[1]
     else:
         item_to_get = input("Get what? ").lower()
-    while item_to_get not in rooms[player["room"]]["items"]:
-        item_to_get = input("This item does not exists, repeat the name: ")
+    if item_to_get not in rooms[player["room"]]["items"]:
+        print("This item does not exists, try again.")
+        return
     random_choice = random.randint(0, 1)
     if random_choice:
         player["inventory"].append(item_to_get)
